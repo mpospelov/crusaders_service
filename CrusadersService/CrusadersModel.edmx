@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CrusadersModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="CrusadersModelStoreContainer">
+          <EntitySet Name="Games1" EntityType="CrusadersModel.Store.Games1" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GamesResults" EntityType="CrusadersModel.Store.GamesResults" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Players1" EntityType="CrusadersModel.Store.Players1" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tickets" EntityType="CrusadersModel.Store.Tickets" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_GameTicket" Association="CrusadersModel.Store.FK_GameTicket">
+            <End Role="Games1" EntitySet="Games1" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayersGames" Association="CrusadersModel.Store.FK_PlayersGames">
+            <End Role="Players1" EntitySet="Players1" />
+            <End Role="Games1" EntitySet="Games1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultsGames" Association="CrusadersModel.Store.FK_ResultsGames">
+            <End Role="GamesResults" EntitySet="GamesResults" />
+            <End Role="Games1" EntitySet="Games1" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Games1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Opponent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Venue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Comp" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Result_id" Type="int" />
+          <Property Name="Player_id" Type="int" />
+        </EntityType>
+        <EntityType Name="GamesResults">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Result" Type="bit" Nullable="false" />
+          <Property Name="Opponent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Venue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Comp" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Points" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Players1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FamilyName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Game_id" Type="int" />
+        </EntityType>
+        <Association Name="FK_GameTicket">
+          <End Role="Games1" Type="CrusadersModel.Store.Games1" Multiplicity="0..1" />
+          <End Role="Tickets" Type="CrusadersModel.Store.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="Game_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayersGames">
+          <End Role="Players1" Type="CrusadersModel.Store.Players1" Multiplicity="0..1" />
+          <End Role="Games1" Type="CrusadersModel.Store.Games1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Games1">
+              <PropertyRef Name="Player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultsGames">
+          <End Role="GamesResults" Type="CrusadersModel.Store.GamesResults" Multiplicity="0..1" />
+          <End Role="Games1" Type="CrusadersModel.Store.Games1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GamesResults">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Games1">
+              <PropertyRef Name="Result_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CrusadersModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CrusadersEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Games1" EntityType="CrusadersModel.Games1" />
+          <EntitySet Name="GamesResults" EntityType="CrusadersModel.GamesResult" />
+          <EntitySet Name="Players1" EntityType="CrusadersModel.Players1" />
+          <EntitySet Name="Tickets" EntityType="CrusadersModel.Ticket" />
+          <AssociationSet Name="FK_GameTicket" Association="CrusadersModel.FK_GameTicket">
+            <End Role="Games1" EntitySet="Games1" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayersGames" Association="CrusadersModel.FK_PlayersGames">
+            <End Role="Players1" EntitySet="Players1" />
+            <End Role="Games1" EntitySet="Games1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultsGames" Association="CrusadersModel.FK_ResultsGames">
+            <End Role="GamesResults" EntitySet="GamesResults" />
+            <End Role="Games1" EntitySet="Games1" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Games1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Opponent" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Venue" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Comp" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Data" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Result_id" Type="Int32" />
+          <Property Name="Player_id" Type="Int32" />
+          <NavigationProperty Name="Tickets" Relationship="CrusadersModel.FK_GameTicket" FromRole="Games1" ToRole="Tickets" />
+          <NavigationProperty Name="Players1" Relationship="CrusadersModel.FK_PlayersGames" FromRole="Games1" ToRole="Players1" />
+          <NavigationProperty Name="GamesResult" Relationship="CrusadersModel.FK_ResultsGames" FromRole="Games1" ToRole="GamesResults" />
+        </EntityType>
+        <EntityType Name="GamesResult">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Result" Type="Boolean" Nullable="false" />
+          <Property Name="Opponent" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Venue" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Comp" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Data" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Points" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Games1" Relationship="CrusadersModel.FK_ResultsGames" FromRole="GamesResults" ToRole="Games1" />
+        </EntityType>
+        <EntityType Name="Players1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="FamilyName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Games1" Relationship="CrusadersModel.FK_PlayersGames" FromRole="Players1" ToRole="Games1" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Game_id" Type="Int32" />
+          <NavigationProperty Name="Games1" Relationship="CrusadersModel.FK_GameTicket" FromRole="Tickets" ToRole="Games1" />
+        </EntityType>
+        <Association Name="FK_GameTicket">
+          <End Role="Games1" Type="CrusadersModel.Games1" Multiplicity="0..1" />
+          <End Role="Tickets" Type="CrusadersModel.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="Game_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayersGames">
+          <End Role="Players1" Type="CrusadersModel.Players1" Multiplicity="0..1" />
+          <End Role="Games1" Type="CrusadersModel.Games1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Games1">
+              <PropertyRef Name="Player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultsGames">
+          <End Role="GamesResults" Type="CrusadersModel.GamesResult" Multiplicity="0..1" />
+          <End Role="Games1" Type="CrusadersModel.Games1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GamesResults">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Games1">
+              <PropertyRef Name="Result_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CrusadersModelStoreContainer" CdmEntityContainer="CrusadersEntities">
+          <EntitySetMapping Name="Games1">
+            <EntityTypeMapping TypeName="CrusadersModel.Games1">
+              <MappingFragment StoreEntitySet="Games1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Opponent" ColumnName="Opponent" />
+                <ScalarProperty Name="Venue" ColumnName="Venue" />
+                <ScalarProperty Name="Comp" ColumnName="Comp" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Result_id" ColumnName="Result_id" />
+                <ScalarProperty Name="Player_id" ColumnName="Player_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GamesResults">
+            <EntityTypeMapping TypeName="CrusadersModel.GamesResult">
+              <MappingFragment StoreEntitySet="GamesResults">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Opponent" ColumnName="Opponent" />
+                <ScalarProperty Name="Venue" ColumnName="Venue" />
+                <ScalarProperty Name="Comp" ColumnName="Comp" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players1">
+            <EntityTypeMapping TypeName="CrusadersModel.Players1">
+              <MappingFragment StoreEntitySet="Players1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="CrusadersModel.Ticket">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Game_id" ColumnName="Game_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
