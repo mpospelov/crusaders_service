@@ -52,6 +52,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="NewsEntities">
+      <EntityTypeMapping TypeName="IsTypeOf(CrusadersModel.NewsEntity)">
+        <MappingFragment StoreEntitySet="NewsEntities">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="PlayerGame" TypeName="CrusadersModel.PlayerGame" StoreEntitySet="PlayerGame">
       <EndProperty Name="Player">
         <ScalarProperty Name="id" ColumnName="Players_id" />

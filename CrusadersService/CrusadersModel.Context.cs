@@ -29,5 +29,6 @@ namespace CrusadersService
         public DbSet<GameResult> GameResults { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<NewsEntity> NewsEntities { get; set; }
     }
 }

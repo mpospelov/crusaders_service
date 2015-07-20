@@ -5,6 +5,7 @@
     <EntitySet Name="GameResults" EntityType="CrusadersModel.Store.GameResults" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Players" EntityType="CrusadersModel.Store.Players" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Tickets" EntityType="CrusadersModel.Store.Tickets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NewsEntities" EntityType="CrusadersModel.Store.NewsEntities" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PlayerGame" EntityType="CrusadersModel.Store.PlayerGame" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_GameTicket" Association="CrusadersModel.Store.FK_GameTicket">
       <End Role="Game" EntitySet="Games1" />
@@ -69,6 +70,15 @@
     <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Game_id" Type="int" Nullable="true" />
     <Property Name="AgeOrType" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NewsEntities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="PlayerGame">
     <Key>

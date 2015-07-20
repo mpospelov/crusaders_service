@@ -12,6 +12,7 @@
         <AssociationConnector Association="CrusadersModel.FK_GameTicket" ManuallyRouted="false" />
         <AssociationConnector Association="CrusadersModel.FK_ResultsGames" ManuallyRouted="false" />
         <AssociationConnector Association="CrusadersModel.PlayerGame" />
+        <EntityTypeShape EntityType="CrusadersModel.NewsEntity" Width="1.5" PointX="4.875" PointY="4.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

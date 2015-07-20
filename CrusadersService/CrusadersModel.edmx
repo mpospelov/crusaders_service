@@ -10,6 +10,7 @@
     <EntitySet Name="GameResults" EntityType="CrusadersModel.Store.GameResults" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Players" EntityType="CrusadersModel.Store.Players" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Tickets" EntityType="CrusadersModel.Store.Tickets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NewsEntities" EntityType="CrusadersModel.Store.NewsEntities" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PlayerGame" EntityType="CrusadersModel.Store.PlayerGame" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_GameTicket" Association="CrusadersModel.Store.FK_GameTicket">
       <End Role="Game" EntitySet="Games1" />
@@ -74,6 +75,15 @@
     <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Game_id" Type="int" Nullable="true" />
     <Property Name="AgeOrType" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NewsEntities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="PlayerGame">
     <Key>
@@ -152,6 +162,7 @@
             <End Role="Player" EntitySet="Players" />
             <End Role="Game" EntitySet="Games1" />
           </AssociationSet>
+          <EntitySet Name="NewsEntities" EntityType="CrusadersModel.NewsEntity" />
         </EntityContainer>
         <EntityType Name="Game">
           <Key>
@@ -234,6 +245,15 @@
           <End Type="CrusadersModel.Player" Role="Player" Multiplicity="*" />
           <End Type="CrusadersModel.Game" Role="Game" Multiplicity="*" />
         </Association>
+        <EntityType Name="NewsEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Image" Nullable="false" />
+          <Property Type="String" Name="Content" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -288,6 +308,16 @@
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Game_id" ColumnName="Game_id" />
           <ScalarProperty Name="AgeOrType" ColumnName="AgeOrType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewsEntities">
+      <EntityTypeMapping TypeName="IsTypeOf(CrusadersModel.NewsEntity)">
+        <MappingFragment StoreEntitySet="NewsEntities">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

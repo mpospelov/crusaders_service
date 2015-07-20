@@ -114,6 +114,9 @@
     <Compile Include="GameResult.cs">
       <DependentUpon>CrusadersModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NewsEntity.cs">
+      <DependentUpon>CrusadersModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Player.cs">
       <DependentUpon>CrusadersModel.tt</DependentUpon>
     </Compile>

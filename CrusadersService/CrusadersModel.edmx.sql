@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/20/2015 19:59:47
+-- Date Created: 07/20/2015 21:51:24
 -- Generated from EDMX file: C:\temp\crusaders_service\CrusadersService\CrusadersModel.edmx
 -- --------------------------------------------------
 
@@ -99,6 +99,15 @@ CREATE TABLE [dbo].[Tickets] (
 );
 GO
 
+-- Creating table 'NewsEntities'
+CREATE TABLE [dbo].[NewsEntities] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Image] nvarchar(max)  NOT NULL,
+    [Content] nvarchar(max)  NOT NULL,
+    [Title] nvarchar(max)  NOT NULL
+);
+GO
+
 -- Creating table 'PlayerGame'
 CREATE TABLE [dbo].[PlayerGame] (
     [Players_id] int  NOT NULL,
@@ -132,6 +141,12 @@ GO
 ALTER TABLE [dbo].[Tickets]
 ADD CONSTRAINT [PK_Tickets]
     PRIMARY KEY CLUSTERED ([id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'NewsEntities'
+ALTER TABLE [dbo].[NewsEntities]
+ADD CONSTRAINT [PK_NewsEntities]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Players_id], [Games_id] in table 'PlayerGame'
