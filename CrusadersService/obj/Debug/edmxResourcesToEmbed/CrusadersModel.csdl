@@ -57,6 +57,7 @@
     <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Position" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Games" Relationship="CrusadersModel.PlayerGame" FromRole="Player" ToRole="Game" />
+    <Property Type="String" Name="Avatar" Nullable="false" />
   </EntityType>
   <EntityType Name="Ticket">
     <Key>

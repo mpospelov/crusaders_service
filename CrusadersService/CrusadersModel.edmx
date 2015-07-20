@@ -62,6 +62,7 @@
     <Property Name="FamilyName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Avatar" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Tickets">
     <Key>
@@ -191,6 +192,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Position" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Games" Relationship="CrusadersModel.PlayerGame" FromRole="Player" ToRole="Game" />
+          <Property Type="String" Name="Avatar" Nullable="false" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
@@ -273,6 +275,7 @@
           <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -36,6 +36,7 @@
           <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

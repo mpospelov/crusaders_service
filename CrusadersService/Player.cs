@@ -24,6 +24,7 @@ namespace CrusadersService
         public string FamilyName { get; set; }
         public string Name { get; set; }
         public string Position { get; set; }
+        public string Avatar { get; set; }
     
         public virtual ICollection<Game> Games { get; set; }
     }

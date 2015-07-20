@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/20/2015 19:18:32
+-- Date Created: 07/20/2015 19:59:47
 -- Generated from EDMX file: C:\temp\crusaders_service\CrusadersService\CrusadersModel.edmx
 -- --------------------------------------------------
 
@@ -18,11 +18,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_GameTicket]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Tickets] DROP CONSTRAINT [FK_GameTicket];
 GO
-IF OBJECT_ID(N'[dbo].[FK_PlayersGames]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Games1] DROP CONSTRAINT [FK_PlayersGames];
-GO
 IF OBJECT_ID(N'[dbo].[FK_ResultsGames]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Games1] DROP CONSTRAINT [FK_ResultsGames];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PlayerGame_Player]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PlayerGame] DROP CONSTRAINT [FK_PlayerGame_Player];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PlayerGame_Game]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PlayerGame] DROP CONSTRAINT [FK_PlayerGame_Game];
 GO
 
 -- --------------------------------------------------
@@ -40,6 +43,9 @@ IF OBJECT_ID(N'[dbo].[Players]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Tickets]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Tickets];
+GO
+IF OBJECT_ID(N'[dbo].[PlayerGame]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PlayerGame];
 GO
 
 -- --------------------------------------------------
@@ -77,7 +83,8 @@ CREATE TABLE [dbo].[Players] (
     [Number] nvarchar(max)  NOT NULL,
     [FamilyName] nvarchar(max)  NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [Position] nvarchar(max)  NOT NULL
+    [Position] nvarchar(max)  NOT NULL,
+    [Avatar] nvarchar(max)  NOT NULL
 );
 GO
 

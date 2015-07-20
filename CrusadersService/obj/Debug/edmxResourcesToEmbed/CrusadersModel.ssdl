@@ -57,6 +57,7 @@
     <Property Name="FamilyName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Avatar" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Tickets">
     <Key>
