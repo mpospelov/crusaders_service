@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CrusadersModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="CrusadersEntities" p1:LazyLoadingEnabled="true">
-    <EntitySet Name="Games1" EntityType="CrusadersModel.Games1" />
-    <EntitySet Name="GamesResults" EntityType="CrusadersModel.GamesResult" />
-    <EntitySet Name="Players1" EntityType="CrusadersModel.Players1" />
+    <EntitySet Name="Games1" EntityType="CrusadersModel.Game" />
+    <EntitySet Name="GameResults" EntityType="CrusadersModel.GameResult" />
+    <EntitySet Name="Players" EntityType="CrusadersModel.Player" />
     <EntitySet Name="Tickets" EntityType="CrusadersModel.Ticket" />
     <AssociationSet Name="FK_GameTicket" Association="CrusadersModel.FK_GameTicket">
-      <End Role="Games1" EntitySet="Games1" />
+      <End Role="Game" EntitySet="Games1" />
       <End Role="Tickets" EntitySet="Tickets" />
     </AssociationSet>
-    <AssociationSet Name="FK_PlayersGames" Association="CrusadersModel.FK_PlayersGames">
-      <End Role="Players1" EntitySet="Players1" />
-      <End Role="Games1" EntitySet="Games1" />
-    </AssociationSet>
     <AssociationSet Name="FK_ResultsGames" Association="CrusadersModel.FK_ResultsGames">
-      <End Role="GamesResults" EntitySet="GamesResults" />
-      <End Role="Games1" EntitySet="Games1" />
+      <End Role="GamesResults" EntitySet="GameResults" />
+      <End Role="Game" EntitySet="Games1" />
+    </AssociationSet>
+    <AssociationSet Name="PlayerGame" Association="CrusadersModel.PlayerGame">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="Game" EntitySet="Games1" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Games1">
+  <EntityType Name="Game">
     <Key>
       <PropertyRef Name="id" />
     </Key>
@@ -30,11 +30,11 @@
     <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Result_id" Type="Int32" />
     <Property Name="Player_id" Type="Int32" />
-    <NavigationProperty Name="Tickets" Relationship="CrusadersModel.FK_GameTicket" FromRole="Games1" ToRole="Tickets" />
-    <NavigationProperty Name="Players1" Relationship="CrusadersModel.FK_PlayersGames" FromRole="Games1" ToRole="Players1" />
-    <NavigationProperty Name="GamesResult" Relationship="CrusadersModel.FK_ResultsGames" FromRole="Games1" ToRole="GamesResults" />
+    <NavigationProperty Name="Tickets" Relationship="CrusadersModel.FK_GameTicket" FromRole="Game" ToRole="Tickets" />
+    <NavigationProperty Name="GamesResult" Relationship="CrusadersModel.FK_ResultsGames" FromRole="Game" ToRole="GamesResults" />
+    <NavigationProperty Name="Players" Relationship="CrusadersModel.PlayerGame" FromRole="Game" ToRole="Player" />
   </EntityType>
-  <EntityType Name="GamesResult">
+  <EntityType Name="GameResult">
     <Key>
       <PropertyRef Name="id" />
     </Key>
@@ -45,9 +45,9 @@
     <Property Name="Comp" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Data" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Points" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <NavigationProperty Name="Games1" Relationship="CrusadersModel.FK_ResultsGames" FromRole="GamesResults" ToRole="Games1" />
+    <NavigationProperty Name="Game" Relationship="CrusadersModel.FK_ResultsGames" FromRole="GamesResults" ToRole="Game" />
   </EntityType>
-  <EntityType Name="Players1">
+  <EntityType Name="Player">
     <Key>
       <PropertyRef Name="id" />
     </Key>
@@ -56,7 +56,7 @@
     <Property Name="FamilyName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Position" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <NavigationProperty Name="Games1" Relationship="CrusadersModel.FK_PlayersGames" FromRole="Players1" ToRole="Games1" />
+    <NavigationProperty Name="Games" Relationship="CrusadersModel.PlayerGame" FromRole="Player" ToRole="Game" />
   </EntityType>
   <EntityType Name="Ticket">
     <Key>
@@ -67,14 +67,14 @@
     <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Game_id" Type="Int32" />
-    <NavigationProperty Name="Games1" Relationship="CrusadersModel.FK_GameTicket" FromRole="Tickets" ToRole="Games1" />
+    <NavigationProperty Name="Game" Relationship="CrusadersModel.FK_GameTicket" FromRole="Tickets" ToRole="Game" />
     <Property Type="String" Name="AgeOrType" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_GameTicket">
-    <End Role="Games1" Type="CrusadersModel.Games1" Multiplicity="0..1" />
+    <End Role="Game" Type="CrusadersModel.Game" Multiplicity="0..1" />
     <End Role="Tickets" Type="CrusadersModel.Ticket" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Games1">
+      <Principal Role="Game">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="Tickets">
@@ -82,28 +82,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PlayersGames">
-    <End Role="Players1" Type="CrusadersModel.Players1" Multiplicity="0..1" />
-    <End Role="Games1" Type="CrusadersModel.Games1" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Players1">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Games1">
-        <PropertyRef Name="Player_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ResultsGames">
-    <End Role="GamesResults" Type="CrusadersModel.GamesResult" Multiplicity="0..1" />
-    <End Role="Games1" Type="CrusadersModel.Games1" Multiplicity="*" />
+    <End Role="GamesResults" Type="CrusadersModel.GameResult" Multiplicity="0..1" />
+    <End Role="Game" Type="CrusadersModel.Game" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="GamesResults">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Games1">
+      <Dependent Role="Game">
         <PropertyRef Name="Result_id" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <Association Name="PlayerGame">
+    <End Type="CrusadersModel.Player" Role="Player" Multiplicity="*" />
+    <End Type="CrusadersModel.Game" Role="Game" Multiplicity="*" />
   </Association>
 </Schema>

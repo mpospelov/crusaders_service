@@ -108,13 +108,13 @@
     <Compile Include="CrusadersService.svc.cs">
       <DependentUpon>CrusadersService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Games1.cs">
+    <Compile Include="Game.cs">
       <DependentUpon>CrusadersModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GamesResult.cs">
+    <Compile Include="GameResult.cs">
       <DependentUpon>CrusadersModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Players1.cs">
+    <Compile Include="Player.cs">
       <DependentUpon>CrusadersModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

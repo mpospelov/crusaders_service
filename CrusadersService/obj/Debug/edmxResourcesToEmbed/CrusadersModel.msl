@@ -2,7 +2,7 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="CrusadersModelStoreContainer" CdmEntityContainer="CrusadersEntities">
     <EntitySetMapping Name="Games1">
-      <EntityTypeMapping TypeName="IsTypeOf(CrusadersModel.Games1)">
+      <EntityTypeMapping TypeName="IsTypeOf(CrusadersModel.Game)">
         <MappingFragment StoreEntitySet="Games1">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Opponent" ColumnName="Opponent" />
@@ -15,9 +15,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="GamesResults">
-      <EntityTypeMapping TypeName="IsTypeOf(CrusadersModel.GamesResult)">
-        <MappingFragment StoreEntitySet="GamesResults">
+    <EntitySetMapping Name="GameResults">
+      <EntityTypeMapping TypeName="IsTypeOf(CrusadersModel.GameResult)">
+        <MappingFragment StoreEntitySet="GameResults">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Result" ColumnName="Result" />
           <ScalarProperty Name="Opponent" ColumnName="Opponent" />
@@ -28,9 +28,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Players1">
-      <EntityTypeMapping TypeName="IsTypeOf(CrusadersModel.Players1)">
-        <MappingFragment StoreEntitySet="Players1">
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="IsTypeOf(CrusadersModel.Player)">
+        <MappingFragment StoreEntitySet="Players">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
@@ -51,5 +51,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="PlayerGame" TypeName="CrusadersModel.PlayerGame" StoreEntitySet="PlayerGame">
+      <EndProperty Name="Player">
+        <ScalarProperty Name="id" ColumnName="Players_id" />
+      </EndProperty>
+      <EndProperty Name="Game">
+        <ScalarProperty Name="id" ColumnName="Games_id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

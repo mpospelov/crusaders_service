@@ -18,11 +18,7 @@ namespace CrusadersService
         // This method is called only once to initialize service-wide policies.
         public static void InitializeService(DataServiceConfiguration config)
         {
-            // TODO: set rules to indicate which entity sets and service operations are visible, updatable, etc.
-            // Examples:
-            // config.SetEntitySetAccessRule("MyEntityset", EntitySetRights.AllRead);
-            // config.SetServiceOperationAccessRule("MyServiceOperation", ServiceOperationRights.All);
-            config.SetEntitySetAccessRule("Tickets", EntitySetRights.All);
+            config.SetEntitySetAccessRule("*", EntitySetRights.All);
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
         }
     }

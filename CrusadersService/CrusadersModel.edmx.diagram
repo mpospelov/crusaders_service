@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="004678c89dd64a8b93f242045c5afd1f" Name="Diagram1">
-        <EntityTypeShape EntityType="CrusadersModel.Games1" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CrusadersModel.GamesResult" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CrusadersModel.Players1" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrusadersModel.Game" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrusadersModel.GameResult" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrusadersModel.Player" Width="1.5" PointX="7.875" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CrusadersModel.Ticket" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <AssociationConnector Association="CrusadersModel.FK_GameTicket" ManuallyRouted="false" />
-        <AssociationConnector Association="CrusadersModel.FK_PlayersGames" ManuallyRouted="false" />
         <AssociationConnector Association="CrusadersModel.FK_ResultsGames" ManuallyRouted="false" />
+        <AssociationConnector Association="CrusadersModel.PlayerGame" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

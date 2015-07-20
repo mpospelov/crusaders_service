@@ -12,11 +12,11 @@ namespace CrusadersService
     using System;
     using System.Collections.Generic;
     
-    public partial class GamesResult
+    public partial class GameResult
     {
-        public GamesResult()
+        public GameResult()
         {
-            this.Games1 = new HashSet<Games1>();
+            this.Game = new HashSet<Game>();
         }
     
         public int id { get; set; }
@@ -27,6 +27,6 @@ namespace CrusadersService
         public string Data { get; set; }
         public string Points { get; set; }
     
-        public virtual ICollection<Games1> Games1 { get; set; }
+        public virtual ICollection<Game> Game { get; set; }
     }
 }

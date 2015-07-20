@@ -12,11 +12,12 @@ namespace CrusadersService
     using System;
     using System.Collections.Generic;
     
-    public partial class Games1
+    public partial class Game
     {
-        public Games1()
+        public Game()
         {
             this.Tickets = new HashSet<Ticket>();
+            this.Players = new HashSet<Player>();
         }
     
         public int id { get; set; }
@@ -29,7 +30,7 @@ namespace CrusadersService
         public Nullable<int> Player_id { get; set; }
     
         public virtual ICollection<Ticket> Tickets { get; set; }
-        public virtual Players1 Players1 { get; set; }
-        public virtual GamesResult GamesResult { get; set; }
+        public virtual GameResult GamesResult { get; set; }
+        public virtual ICollection<Player> Players { get; set; }
     }
 }

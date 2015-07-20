@@ -25,9 +25,9 @@ namespace CrusadersService
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Games1> Games1 { get; set; }
-        public DbSet<GamesResult> GamesResults { get; set; }
-        public DbSet<Players1> Players1 { get; set; }
+        public DbSet<Game> Games1 { get; set; }
+        public DbSet<GameResult> GameResults { get; set; }
+        public DbSet<Player> Players { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
     }
 }

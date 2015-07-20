@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/20/2015 12:04:32
--- Generated from EDMX file: C:\temp\Crusaders\CrusadersService\CrusadersService\CrusadersModel.edmx
+-- Date Created: 07/20/2015 19:18:32
+-- Generated from EDMX file: C:\temp\crusaders_service\CrusadersService\CrusadersModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -32,11 +32,11 @@ GO
 IF OBJECT_ID(N'[dbo].[Games1]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Games1];
 GO
-IF OBJECT_ID(N'[dbo].[GamesResults]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[GamesResults];
+IF OBJECT_ID(N'[dbo].[GameResults]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[GameResults];
 GO
-IF OBJECT_ID(N'[dbo].[Players1]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Players1];
+IF OBJECT_ID(N'[dbo].[Players]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Players];
 GO
 IF OBJECT_ID(N'[dbo].[Tickets]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Tickets];
@@ -59,8 +59,8 @@ CREATE TABLE [dbo].[Games1] (
 );
 GO
 
--- Creating table 'GamesResults'
-CREATE TABLE [dbo].[GamesResults] (
+-- Creating table 'GameResults'
+CREATE TABLE [dbo].[GameResults] (
     [id] int IDENTITY(1,1) NOT NULL,
     [Result] bit  NOT NULL,
     [Opponent] nvarchar(max)  NOT NULL,
@@ -71,8 +71,8 @@ CREATE TABLE [dbo].[GamesResults] (
 );
 GO
 
--- Creating table 'Players1'
-CREATE TABLE [dbo].[Players1] (
+-- Creating table 'Players'
+CREATE TABLE [dbo].[Players] (
     [id] int IDENTITY(1,1) NOT NULL,
     [Number] nvarchar(max)  NOT NULL,
     [FamilyName] nvarchar(max)  NOT NULL,
@@ -92,6 +92,13 @@ CREATE TABLE [dbo].[Tickets] (
 );
 GO
 
+-- Creating table 'PlayerGame'
+CREATE TABLE [dbo].[PlayerGame] (
+    [Players_id] int  NOT NULL,
+    [Games_id] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -102,15 +109,15 @@ ADD CONSTRAINT [PK_Games1]
     PRIMARY KEY CLUSTERED ([id] ASC);
 GO
 
--- Creating primary key on [id] in table 'GamesResults'
-ALTER TABLE [dbo].[GamesResults]
-ADD CONSTRAINT [PK_GamesResults]
+-- Creating primary key on [id] in table 'GameResults'
+ALTER TABLE [dbo].[GameResults]
+ADD CONSTRAINT [PK_GameResults]
     PRIMARY KEY CLUSTERED ([id] ASC);
 GO
 
--- Creating primary key on [id] in table 'Players1'
-ALTER TABLE [dbo].[Players1]
-ADD CONSTRAINT [PK_Players1]
+-- Creating primary key on [id] in table 'Players'
+ALTER TABLE [dbo].[Players]
+ADD CONSTRAINT [PK_Players]
     PRIMARY KEY CLUSTERED ([id] ASC);
 GO
 
@@ -118,6 +125,12 @@ GO
 ALTER TABLE [dbo].[Tickets]
 ADD CONSTRAINT [PK_Tickets]
     PRIMARY KEY CLUSTERED ([id] ASC);
+GO
+
+-- Creating primary key on [Players_id], [Games_id] in table 'PlayerGame'
+ALTER TABLE [dbo].[PlayerGame]
+ADD CONSTRAINT [PK_PlayerGame]
+    PRIMARY KEY NONCLUSTERED ([Players_id], [Games_id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -138,25 +151,11 @@ ON [dbo].[Tickets]
     ([Game_id]);
 GO
 
--- Creating foreign key on [Player_id] in table 'Games1'
-ALTER TABLE [dbo].[Games1]
-ADD CONSTRAINT [FK_PlayersGames]
-    FOREIGN KEY ([Player_id])
-    REFERENCES [dbo].[Players1]
-        ([id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PlayersGames'
-CREATE INDEX [IX_FK_PlayersGames]
-ON [dbo].[Games1]
-    ([Player_id]);
-GO
-
 -- Creating foreign key on [Result_id] in table 'Games1'
 ALTER TABLE [dbo].[Games1]
 ADD CONSTRAINT [FK_ResultsGames]
     FOREIGN KEY ([Result_id])
-    REFERENCES [dbo].[GamesResults]
+    REFERENCES [dbo].[GameResults]
         ([id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
@@ -164,6 +163,29 @@ ADD CONSTRAINT [FK_ResultsGames]
 CREATE INDEX [IX_FK_ResultsGames]
 ON [dbo].[Games1]
     ([Result_id]);
+GO
+
+-- Creating foreign key on [Players_id] in table 'PlayerGame'
+ALTER TABLE [dbo].[PlayerGame]
+ADD CONSTRAINT [FK_PlayerGame_Player]
+    FOREIGN KEY ([Players_id])
+    REFERENCES [dbo].[Players]
+        ([id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Games_id] in table 'PlayerGame'
+ALTER TABLE [dbo].[PlayerGame]
+ADD CONSTRAINT [FK_PlayerGame_Game]
+    FOREIGN KEY ([Games_id])
+    REFERENCES [dbo].[Games1]
+        ([id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PlayerGame_Game'
+CREATE INDEX [IX_FK_PlayerGame_Game]
+ON [dbo].[PlayerGame]
+    ([Games_id]);
 GO
 
 -- --------------------------------------------------

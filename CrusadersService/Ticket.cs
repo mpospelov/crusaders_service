@@ -21,6 +21,6 @@ namespace CrusadersService
         public Nullable<int> Game_id { get; set; }
         public string AgeOrType { get; set; }
     
-        public virtual Games1 Games1 { get; set; }
+        public virtual Game Game { get; set; }
     }
 }
