@@ -1,0 +1,17 @@
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\CrusadersService.dll
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\CrusadersService.pdb
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\EntityFramework.dll
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\EntityFramework.xml
+C:\temp\Crusaders\CrusadersService\CrusadersService\obj\Debug\CrusadersService.dll
+C:\temp\Crusaders\CrusadersService\CrusadersService\obj\Debug\CrusadersService.pdb
+C:\temp\Crusaders\CrusadersService\CrusadersService\obj\Debug\CrusadersService.csprojResolveAssemblyReference.cache
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\Microsoft.Data.Edm.dll
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\Microsoft.Data.OData.dll
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\Microsoft.Data.Services.Client.dll
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\Microsoft.Data.Services.dll
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\System.Spatial.dll
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\Microsoft.Data.Edm.xml
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\Microsoft.Data.OData.xml
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\Microsoft.Data.Services.xml
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\Microsoft.Data.Services.Client.xml
+C:\temp\Crusaders\CrusadersService\CrusadersService\bin\System.Spatial.xml

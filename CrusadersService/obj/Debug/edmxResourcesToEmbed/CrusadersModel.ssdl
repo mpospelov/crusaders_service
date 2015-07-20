@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CrusadersModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CrusadersModelStoreContainer">
+    <EntitySet Name="Games1" EntityType="CrusadersModel.Store.Games1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GamesResults" EntityType="CrusadersModel.Store.GamesResults" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Players1" EntityType="CrusadersModel.Store.Players1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tickets" EntityType="CrusadersModel.Store.Tickets" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_GameTicket" Association="CrusadersModel.Store.FK_GameTicket">
+      <End Role="Games1" EntitySet="Games1" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayersGames" Association="CrusadersModel.Store.FK_PlayersGames">
+      <End Role="Players1" EntitySet="Players1" />
+      <End Role="Games1" EntitySet="Games1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResultsGames" Association="CrusadersModel.Store.FK_ResultsGames">
+      <End Role="GamesResults" EntitySet="GamesResults" />
+      <End Role="Games1" EntitySet="Games1" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Games1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Opponent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Venue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Comp" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Result_id" Type="int" />
+    <Property Name="Player_id" Type="int" />
+  </EntityType>
+  <EntityType Name="GamesResults">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Result" Type="bit" Nullable="false" />
+    <Property Name="Opponent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Venue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Comp" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Points" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Players1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FamilyName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tickets">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Price" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Game_id" Type="int" />
+    <Property Name="AgeOrType" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_GameTicket">
+    <End Role="Games1" Type="CrusadersModel.Store.Games1" Multiplicity="0..1" />
+    <End Role="Tickets" Type="CrusadersModel.Store.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Games1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="Game_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlayersGames">
+    <End Role="Players1" Type="CrusadersModel.Store.Players1" Multiplicity="0..1" />
+    <End Role="Games1" Type="CrusadersModel.Store.Games1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Players1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Games1">
+        <PropertyRef Name="Player_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResultsGames">
+    <End Role="GamesResults" Type="CrusadersModel.Store.GamesResults" Multiplicity="0..1" />
+    <End Role="Games1" Type="CrusadersModel.Store.Games1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GamesResults">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Games1">
+        <PropertyRef Name="Result_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CrusadersModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CrusadersModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="CrusadersModelStoreContainer">
           <EntitySet Name="Games1" EntityType="CrusadersModel.Store.Games1" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GamesResults" EntityType="CrusadersModel.Store.GamesResults" store:Type="Tables" Schema="dbo" />
@@ -67,6 +67,7 @@
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Game_id" Type="int" />
+          <Property Name="AgeOrType" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <Association Name="FK_GameTicket">
           <End Role="Games1" Type="CrusadersModel.Store.Games1" Multiplicity="0..1" />
@@ -104,8 +105,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CrusadersModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -177,6 +177,7 @@
           <Property Name="Type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Game_id" Type="Int32" />
           <NavigationProperty Name="Games1" Relationship="CrusadersModel.FK_GameTicket" FromRole="Tickets" ToRole="Games1" />
+          <Property Type="String" Name="AgeOrType" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_GameTicket">
           <End Role="Games1" Type="CrusadersModel.Games1" Multiplicity="0..1" />
@@ -218,60 +219,60 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CrusadersModelStoreContainer" CdmEntityContainer="CrusadersEntities">
-          <EntitySetMapping Name="Games1">
-            <EntityTypeMapping TypeName="CrusadersModel.Games1">
-              <MappingFragment StoreEntitySet="Games1">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Opponent" ColumnName="Opponent" />
-                <ScalarProperty Name="Venue" ColumnName="Venue" />
-                <ScalarProperty Name="Comp" ColumnName="Comp" />
-                <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Result_id" ColumnName="Result_id" />
-                <ScalarProperty Name="Player_id" ColumnName="Player_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GamesResults">
-            <EntityTypeMapping TypeName="CrusadersModel.GamesResult">
-              <MappingFragment StoreEntitySet="GamesResults">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Result" ColumnName="Result" />
-                <ScalarProperty Name="Opponent" ColumnName="Opponent" />
-                <ScalarProperty Name="Venue" ColumnName="Venue" />
-                <ScalarProperty Name="Comp" ColumnName="Comp" />
-                <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="Points" ColumnName="Points" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Players1">
-            <EntityTypeMapping TypeName="CrusadersModel.Players1">
-              <MappingFragment StoreEntitySet="Players1">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Position" ColumnName="Position" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tickets">
-            <EntityTypeMapping TypeName="CrusadersModel.Ticket">
-              <MappingFragment StoreEntitySet="Tickets">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Game_id" ColumnName="Game_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CrusadersModelStoreContainer" CdmEntityContainer="CrusadersEntities">
+    <EntitySetMapping Name="Games1">
+      <EntityTypeMapping TypeName="IsTypeOf(CrusadersModel.Games1)">
+        <MappingFragment StoreEntitySet="Games1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Opponent" ColumnName="Opponent" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+          <ScalarProperty Name="Comp" ColumnName="Comp" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Result_id" ColumnName="Result_id" />
+          <ScalarProperty Name="Player_id" ColumnName="Player_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GamesResults">
+      <EntityTypeMapping TypeName="IsTypeOf(CrusadersModel.GamesResult)">
+        <MappingFragment StoreEntitySet="GamesResults">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Opponent" ColumnName="Opponent" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+          <ScalarProperty Name="Comp" ColumnName="Comp" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Players1">
+      <EntityTypeMapping TypeName="IsTypeOf(CrusadersModel.Players1)">
+        <MappingFragment StoreEntitySet="Players1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="IsTypeOf(CrusadersModel.Ticket)">
+        <MappingFragment StoreEntitySet="Tickets">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Game_id" ColumnName="Game_id" />
+          <ScalarProperty Name="AgeOrType" ColumnName="AgeOrType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -285,6 +286,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
