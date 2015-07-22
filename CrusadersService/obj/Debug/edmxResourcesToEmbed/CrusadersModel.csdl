@@ -28,7 +28,7 @@
     <Property Name="Venue" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Comp" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Data" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Image" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Result_id" Type="Int32" />
     <Property Name="Player_id" Type="Int32" />
     <NavigationProperty Name="Tickets" Relationship="CrusadersModel.FK_GameTicket" FromRole="Game" ToRole="Tickets" />
@@ -58,7 +58,7 @@
     <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Position" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Games" Relationship="CrusadersModel.PlayerGame" FromRole="Player" ToRole="Game" />
-    <Property Type="String" Name="Avatar" Nullable="false" />
+    <Property Type="String" Name="Avatar" Nullable="true" />
   </EntityType>
   <EntityType Name="Ticket">
     <Key>
@@ -105,7 +105,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Image" Nullable="false" />
+    <Property Type="String" Name="Image" Nullable="true" />
     <Property Type="String" Name="Content" Nullable="false" />
     <Property Type="String" Name="Title" Nullable="false" />
     <Property Type="DateTime" Name="Property1" Nullable="false" annotation:StoreGeneratedPattern="None" />

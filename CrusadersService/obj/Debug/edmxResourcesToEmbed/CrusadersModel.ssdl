@@ -33,7 +33,7 @@
     <Property Name="Venue" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Comp" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Result_id" Type="int" Nullable="true" />
     <Property Name="Player_id" Type="int" Nullable="true" />
   </EntityType>
@@ -58,7 +58,7 @@
     <Property Name="FamilyName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Avatar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Avatar" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Tickets">
     <Key>
@@ -76,7 +76,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Property1" Type="datetime" Nullable="false" />
