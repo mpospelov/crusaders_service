@@ -59,6 +59,7 @@
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Property1" ColumnName="Property1" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -79,6 +79,7 @@
     <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Property1" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="PlayerGame">
     <Key>

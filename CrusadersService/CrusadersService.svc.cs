@@ -13,13 +13,17 @@ using System.Web;
 
 namespace CrusadersService
 {
+    [System.ServiceModel.ServiceBehavior(IncludeExceptionDetailInFaults = true)]   
     public class CrusadersService : DataService<CrusadersEntities>
     {
         // This method is called only once to initialize service-wide policies.
         public static void InitializeService(DataServiceConfiguration config)
         {
+            config.UseVerboseErrors = true;
+
             config.SetEntitySetAccessRule("*", EntitySetRights.All);
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
         }
+        
     }
 }

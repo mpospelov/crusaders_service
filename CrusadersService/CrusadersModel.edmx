@@ -84,6 +84,7 @@
     <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Property1" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="PlayerGame">
     <Key>
@@ -253,6 +254,7 @@
           <Property Type="String" Name="Image" Nullable="false" />
           <Property Type="String" Name="Content" Nullable="false" />
           <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="DateTime" Name="Property1" Nullable="false" annotation:StoreGeneratedPattern="None" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -318,6 +320,7 @@
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Property1" ColumnName="Property1" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -29,6 +29,6 @@ C:\temp\crusaders_service\CrusadersService\bin\Microsoft.Data.OData.xml
 C:\temp\crusaders_service\CrusadersService\bin\Microsoft.Data.Services.xml
 C:\temp\crusaders_service\CrusadersService\bin\Microsoft.Data.Services.Client.xml
 C:\temp\crusaders_service\CrusadersService\bin\System.Spatial.xml
-C:\temp\crusaders_service\CrusadersService\obj\Debug\CrusadersService.csprojResolveAssemblyReference.cache
 C:\temp\crusaders_service\CrusadersService\obj\Debug\CrusadersService.dll
 C:\temp\crusaders_service\CrusadersService\obj\Debug\CrusadersService.pdb
+C:\temp\crusaders_service\CrusadersService\obj\Debug\CrusadersService.csprojResolveAssemblyReference.cache
