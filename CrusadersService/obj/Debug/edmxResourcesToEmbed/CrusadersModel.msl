@@ -11,7 +11,6 @@
           <ScalarProperty Name="Data" ColumnName="Data" />
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="Result_id" ColumnName="Result_id" />
-          <ScalarProperty Name="Player_id" ColumnName="Player_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

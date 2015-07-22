@@ -27,7 +27,6 @@ namespace CrusadersService
         public string Data { get; set; }
         public string Image { get; set; }
         public Nullable<int> Result_id { get; set; }
-        public Nullable<int> Player_id { get; set; }
     
         public virtual ICollection<Ticket> Tickets { get; set; }
         public virtual GameResult GamesResult { get; set; }

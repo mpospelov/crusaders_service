@@ -30,7 +30,6 @@
     <Property Name="Data" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Image" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Result_id" Type="Int32" />
-    <Property Name="Player_id" Type="Int32" />
     <NavigationProperty Name="Tickets" Relationship="CrusadersModel.FK_GameTicket" FromRole="Game" ToRole="Tickets" />
     <NavigationProperty Name="GamesResult" Relationship="CrusadersModel.FK_ResultsGames" FromRole="Game" ToRole="GamesResults" />
     <NavigationProperty Name="Players" Relationship="CrusadersModel.PlayerGame" FromRole="Game" ToRole="Player" />
