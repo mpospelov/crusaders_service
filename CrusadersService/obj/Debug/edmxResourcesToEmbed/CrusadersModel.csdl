@@ -107,6 +107,5 @@
     <Property Type="String" Name="Image" Nullable="true" />
     <Property Type="String" Name="Content" Nullable="false" />
     <Property Type="String" Name="Title" Nullable="false" />
-    <Property Type="DateTime" Name="Property1" Nullable="false" annotation:StoreGeneratedPattern="None" />
   </EntityType>
 </Schema>

@@ -35,7 +35,6 @@
     <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Image" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Result_id" Type="int" Nullable="true" />
-    <Property Name="Player_id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="GameResults">
     <Key>
@@ -79,7 +78,6 @@
     <Property Name="Image" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Property1" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="PlayerGame">
     <Key>

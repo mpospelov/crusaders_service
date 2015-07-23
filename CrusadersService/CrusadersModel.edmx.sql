@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/22/2015 23:27:23
+-- Date Created: 07/23/2015 09:44:42
 -- Generated from EDMX file: C:\temp\crusaders_service\CrusadersService\CrusadersModel.edmx
 -- --------------------------------------------------
 
@@ -63,8 +63,7 @@ CREATE TABLE [dbo].[Games1] (
     [Comp] nvarchar(max)  NOT NULL,
     [Data] nvarchar(max)  NOT NULL,
     [Image] nvarchar(max)  NULL,
-    [Result_id] int  NULL,
-    [Player_id] int  NULL
+    [Result_id] int  NULL
 );
 GO
 
@@ -107,8 +106,7 @@ CREATE TABLE [dbo].[NewsEntities] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Image] nvarchar(max)  NULL,
     [Content] nvarchar(max)  NOT NULL,
-    [Title] nvarchar(max)  NOT NULL,
-    [Property1] datetime  NOT NULL
+    [Title] nvarchar(max)  NOT NULL
 );
 GO
 
